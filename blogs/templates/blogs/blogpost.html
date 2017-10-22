@@ -1,0 +1,19 @@
+{% extends "blogs/base.html" %}
+
+{% block header %}
+	<h2>{{ blogpost.title }}  
+	  <small><span>
+	  	{{ blogpost.date_added|date:'M d, Y H:i' }}
+	  </span>
+	  
+	  <span style="float:right; width: 200px;vertical-align:bottom">
+	  	<a href="{% url 'blogs:edit_blog' blogpost.id %}">edit blog</a>
+	  </span></small></h2>
+
+{% endblock header %}
+
+{% block content %}
+
+  <div>{{ blogpost.text|linebreaks }}</div>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "blogs/base.html" %}
+
+{% block header %}
+  <div class="jumbotron">
+    <h1>Track your life, share your idea.</h1>
+    <h2>Now let's <a href="{% url "users:register" %}">Register an account</a> to <a href="{% url 'blogs:new_blog' %}">add new blog</a>.</h2>
+  </div>
+{% endblock header %}
+
+{% block content %}
+
+
+  	{% for blogpost in blogposts %}
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+
+      <h3>
+        <a href="{% url 'blogs:blogpost' blogpost.id %}">{{ blogpost }}</a>
+        <small>
+          {{ blogpost.date_added|date:'M d, Y H:i' }}
+        </small>
+      </h3>
+    </div>
+    <div class="panel-body">
+      {%if blogpost.text|length >= 300 %}
+        {{blogpost.text|slice:"300"}}...
+      {%else%} 
+        {{blogpost.text|linebreaks}}
+      {%endif%}
+
+    </div>
+  </div> <!-- panel -->
+
+
+  	{% empty %}
+      <h3>
+  	  No blogpost have been added yet.
+      </h3>
+  	{% endfor %}
+
+
+
+{% endblock content %}
+

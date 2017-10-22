@@ -1,0 +1,6 @@
+bg_env/
+*.py[cod]
+*.so
+*.pyc
+blog/*.pyc
+blogs/*.pyc
